@@ -3,7 +3,7 @@
 
 int main(int argc, char** argv) {
 	QApplication app(argc, argv);
-	Window mainWindow;
+	MainWindow mainWindow;
 	mainWindow.show();
 	return app.exec();
 }
