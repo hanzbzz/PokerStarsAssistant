@@ -18,7 +18,8 @@ private:
 	void createMenu();
 
 	QMenuBar* menuBar;
-	QMenu* fileMenu;
+	QMenu* settingsMenu;
+	QAction* setRefreshRate;
 	QAction* selectFolder;
 signals:
 public slots:

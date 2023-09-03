@@ -10,12 +10,13 @@ MainWindow::MainWindow(QWidget* parent) :
 }
 
 void MainWindow::createMenu() {
-
 	menuBar = new QMenuBar();
 
-	fileMenu = new QMenu(tr("Settings"), this);
+	settingsMenu = new QMenu(tr("Settings"), this);
 
-	selectFolder = fileMenu->addAction(tr("Select hand history folder"));
-	menuBar->addMenu(fileMenu);
+	selectFolder = settingsMenu->addAction(tr("Select hand history folder"));
+	setRefreshRate = settingsMenu->addAction(tr("Set refresh rate"));
+	menuBar->addMenu(settingsMenu);
 
 }
+
