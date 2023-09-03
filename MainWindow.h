@@ -1,12 +1,14 @@
 #pragma once
-#ifndef WINDOW_H
-#define WINDOW_H
+#ifndef MAINWINDOW_H
+#define MAINWINDOW_H
 
 #include <QWidget>
 #include <QMenuBar>
 #include <QMenu>
 #include <QAction>
 #include <QVBoxLayout>
+#include <QFrame>
+#include <Qpainter>
 
 class MainWindow : public QWidget
 {
@@ -18,9 +20,9 @@ private:
 	void createMenu();
 
 	QMenuBar* menuBar;
-	QMenu* settingsMenu;
-	QAction* setRefreshRate;
-	QAction* selectFolder;
+protected:
+	// paint the table view
+	void paintEvent(QPaintEvent* event);
 signals:
 public slots:
 };
