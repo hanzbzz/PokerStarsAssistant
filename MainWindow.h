@@ -4,25 +4,24 @@
 
 #include <QWidget>
 #include <QMenuBar>
-#include <QMenu>
-#include <QAction>
 #include <QVBoxLayout>
-#include <QFrame>
-#include <Qpainter>
 
 class MainWindow : public QWidget
 {
 	Q_OBJECT
 public:
 	explicit MainWindow(QWidget* parent = 0);
+	// render specific player information at given position
+	void renderPlayerInfo(QPoint,int);
+	// returns vector of QPoints giving the position where to render the player statistics
+	std::vector<QPoint> calculatePlayerInfoPositions(int);
 private:
 	// creates top menu bar
 	void createMenu();
 
+	QVBoxLayout* mainLayout;
 	QMenuBar* menuBar;
 protected:
-	// paint the table view
-	void paintEvent(QPaintEvent* event);
 signals:
 public slots:
 };
