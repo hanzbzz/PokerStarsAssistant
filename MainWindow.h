@@ -15,6 +15,8 @@ public:
 	void renderPlayerInfo(QPoint,int);
 	// returns vector of QPoints giving the position where to render the player statistics
 	std::vector<QPoint> calculatePlayerInfoPositions(int);
+	//destuctor
+	~MainWindow();
 private:
 	// creates top menu bar
 	void createMenu();

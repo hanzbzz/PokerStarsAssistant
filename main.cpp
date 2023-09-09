@@ -12,8 +12,6 @@ int main(int argc, char** argv) {
 		i++;
 	}
 
-
-
 	mainWindow.show();
 	return app.exec();
 }

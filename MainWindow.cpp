@@ -7,7 +7,7 @@
 MainWindow::MainWindow(QWidget* parent) :
 	QWidget(parent) {
 	setFixedSize(800, 500);
-	mainLayout = new QVBoxLayout;
+	mainLayout = new QVBoxLayout(parent);
 	
 	createMenu();
 
@@ -16,9 +16,9 @@ MainWindow::MainWindow(QWidget* parent) :
 }
 
 void MainWindow::createMenu() {
-	menuBar = new QMenuBar();
+	menuBar = new QMenuBar(this);
 
-	QMenu* settingsMenu = new QMenu(tr("Settings"));
+	QMenu* settingsMenu = new QMenu(tr("Settings"),menuBar);
 
 	QAction* selectFolder = settingsMenu->addAction(tr("Select hand history folder"));
 	QAction* setRefreshRate = settingsMenu->addAction(tr("Set refresh rate"));
@@ -90,5 +90,9 @@ std::vector<QPoint>  MainWindow::calculatePlayerInfoPositions(int numPlayers) {
 			QPoint(width / 5, 5 * (height / 6) - 30)
 		};
 	}
+
+}
+
+MainWindow::~MainWindow() {
 
 }
