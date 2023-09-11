@@ -21,6 +21,7 @@ public:
 private:
 	// creates top menu bar
 	void createMenu();
+	// renders label with path to handhistory file
 	void renderFolderPath();
 
 	QVBoxLayout* mainLayout;

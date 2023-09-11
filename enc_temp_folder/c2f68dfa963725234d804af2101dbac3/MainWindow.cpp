@@ -30,6 +30,7 @@ void MainWindow::createMenu() {
 	menuBar->addMenu(settingsMenu);
 }
 
+
 void::MainWindow::selectFolderDialog() {
 	
 	QFileDialog dialog(this);
@@ -58,6 +59,8 @@ void MainWindow::renderFolderPath() {
 	mainLayout->addLayout(folderPathLayout);
 	mainLayout->setAlignment(folderPathLayout, Qt::AlignCenter);
 }
+
+
 
 void MainWindow::renderPlayerInfo(QPoint pos,int i) {
 	
