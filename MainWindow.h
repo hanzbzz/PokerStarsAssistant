@@ -5,6 +5,7 @@
 #include <QWidget>
 #include <QMenuBar>
 #include <QVBoxLayout>
+#include <QLabel>
 
 class MainWindow : public QWidget
 {
@@ -20,12 +21,19 @@ public:
 private:
 	// creates top menu bar
 	void createMenu();
+	void renderFolderPath();
 
 	QVBoxLayout* mainLayout;
 	QMenuBar* menuBar;
+	QLabel* folderPathLabel;
+	QString folderPath = "No path selected. Select one in Settings->Select hand history folder";
+	
 protected:
 signals:
 public slots:
+	// select the folder where hand history files are stored
+	void selectFolderDialog();
+
 };
 
 #endif // WINDOW_H
