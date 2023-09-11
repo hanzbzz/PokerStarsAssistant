@@ -398,4 +398,4 @@ FodyWeavers.xsd
 *.sln.iml
 
 # ignore VS 2022 temp folder
-./enc_temp_folder/*
+enc_temp_folder/*
