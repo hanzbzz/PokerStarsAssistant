@@ -1,9 +1,12 @@
 #include "MainWindow.h"
+#include "HandHistory.h"
 #include <Map>
 #include <sstream>
 #include <string>
 #include <QLabel>
 #include <QFileDialog>
+
+
 
 MainWindow::MainWindow(QWidget* parent) :
 	QWidget(parent) {

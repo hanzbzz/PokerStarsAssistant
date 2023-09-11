@@ -27,7 +27,7 @@ private:
 	QVBoxLayout* mainLayout;
 	QMenuBar* menuBar;
 	QLabel* folderPathLabel;
-	QString folderPath = "No path selected. Select one in Settings->Select hand history folder";
+	
 	
 protected:
 signals:
