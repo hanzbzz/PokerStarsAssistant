@@ -3,27 +3,60 @@
 #include <sstream>
 #include <string>
 #include <QLabel>
+#include <QFileDialog>
 
 MainWindow::MainWindow(QWidget* parent) :
 	QWidget(parent) {
 	setFixedSize(800, 500);
-	mainLayout = new QVBoxLayout;
+	mainLayout = new QVBoxLayout(parent);
 	
 	createMenu();
-
 	mainLayout->setMenuBar(menuBar);
+
+	renderFolderPath();
+
 	setLayout(mainLayout);
 }
 
 void MainWindow::createMenu() {
-	menuBar = new QMenuBar();
+	menuBar = new QMenuBar(this);
 
-	QMenu* settingsMenu = new QMenu(tr("Settings"));
+	QMenu* settingsMenu = new QMenu(tr("Settings"),menuBar);
 
 	QAction* selectFolder = settingsMenu->addAction(tr("Select hand history folder"));
-	QAction* setRefreshRate = settingsMenu->addAction(tr("Set refresh rate"));
+
+	QObject::connect(selectFolder, SIGNAL(triggered()), this, SLOT(selectFolderDialog()));
 
 	menuBar->addMenu(settingsMenu);
+}
+
+void::MainWindow::selectFolderDialog() {
+	
+	QFileDialog dialog(this);
+	dialog.setFileMode(QFileDialog::Directory);
+	if (dialog.exec()) {
+		folderPath = dialog.selectedFiles()[0];
+	}
+	folderPathLabel->setText(folderPath);
+}
+
+void MainWindow::renderFolderPath() {
+
+	QVBoxLayout* folderPathLayout = new QVBoxLayout();
+
+	QLabel* folderPathTitleLabel = new QLabel();
+	folderPathTitleLabel->setText("Path to hand history folder:");
+	folderPathTitleLabel->setStyleSheet("font-size:20pt;");
+	folderPathLayout->addWidget(folderPathTitleLabel);
+	folderPathLayout->setAlignment(folderPathTitleLabel, Qt::AlignHCenter);
+
+	folderPathLabel = new QLabel();
+	folderPathLabel->setText(folderPath);
+	folderPathLayout->addWidget(folderPathLabel);
+	folderPathLayout->setAlignment(folderPathLabel, Qt::AlignHCenter);
+
+	mainLayout->addLayout(folderPathLayout);
+	mainLayout->setAlignment(folderPathLayout, Qt::AlignCenter);
 }
 
 void MainWindow::renderPlayerInfo(QPoint pos,int i) {
@@ -90,5 +123,9 @@ std::vector<QPoint>  MainWindow::calculatePlayerInfoPositions(int numPlayers) {
 			QPoint(width / 5, 5 * (height / 6) - 30)
 		};
 	}
+
+}
+
+MainWindow::~MainWindow() {
 
 }
