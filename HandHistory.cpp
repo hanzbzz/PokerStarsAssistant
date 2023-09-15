@@ -34,8 +34,8 @@ std::chrono::system_clock::time_point HandHistory::processHands(bool all) {
 std::chrono::system_clock::time_point HandHistory::processHandHistoryFile(std::filesystem::directory_entry handHistoryFileHandle, bool all) {
 	std::ifstream handHistoryFile;
 	std::string line;
-	std::regex rHandStart("PokerStars Hand #\d+: Tournament #\d+, .* (\d{4}/\d{2}/\d{2} \d{2}:\d{2}:\d{2} [A-Z]{2,3}) .*");
-	std::regex rHandEnd("*** SUMMARY ***");
+	std::regex rHandStart("PokerStars Hand #[0-9]+: Tournament #[0-9]+, .* ([0-9]{4}/[0-9]{2}/[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2} [A-Z]{2,3}) .*");
+	std::regex rHandEnd("[*]{3} SUMMARY [*]{3}");
 	std::smatch match;
 
 	handHistoryFile.open(handHistoryFileHandle);
@@ -44,7 +44,7 @@ std::chrono::system_clock::time_point HandHistory::processHandHistoryFile(std::f
 			std::stringstream hand;
 			while (!std::regex_match(line, match, rHandEnd)) {
 				std::getline(handHistoryFile, line);
-				hand << line;
+				hand << line << "\n";
 			}
 			//processHand(hand);
 		}
